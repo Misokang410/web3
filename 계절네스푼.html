@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>계절 네스푼 – 유퀴즈 온더 트립!</title>
+  <!-- Pretendard -->
+  <link href="https://cdn.jsdelivr.net/npm/pretendard/dist/web/static/pretendard.css" rel="stylesheet"/>
+
+  <style>
+    /* ──────────────────────────────────── */
+    /* 0. 네비게이션 (검은 배너) */
+    #topnav {
+      background: #000;
+    }
+    #topnav nav ul {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      max-width: 1200px;
+      margin: auto;
+      padding: .5rem 1rem;
+    }
+    #topnav nav ul li { margin-right:1.5rem; }
+    #topnav nav ul li.logo-title { margin-right:auto; }
+    #topnav nav ul li a {
+      color:#fff;
+      text-decoration:none;
+      font-family:'Pretendard',sans-serif;
+      font-size:.9rem;
+      font-weight:600;
+      transition:opacity .3s;
+    }
+    #topnav nav ul li.logo-title a {
+      font-size:1rem;
+      font-weight:700;
+    }
+    #topnav nav ul li a:hover { opacity:.7; }
+
+    /* ──────────────────────────────────── */
+    /* Reset & 기본 */
+    * { margin:0; padding:0; box-sizing:border-box }
+    body {
+      font-family:'Pretendard',sans-serif;
+      color:#333;
+      background:#f9f9f9;
+      line-height:1.5;
+    }
+    a { text-decoration:none; color:inherit; }
+
+    .container {
+      max-width:1200px; margin:2rem auto; padding:0 1rem;
+    }
+
+    /* ──────────────────────────────────── */
+    /* 1. 설명문구 */
+    .intro {
+      text-align:center;
+      margin-bottom:2rem;
+    }
+    .intro h2 {
+      font-size:2rem;
+      font-weight:700;
+      margin-bottom:.5rem;
+    }
+    .intro p {
+      font-size:1rem;
+      color:#555;
+    }
+
+    /* ──────────────────────────────────── */
+    /* 2. 사계절 섹션 공통 */
+    .season-section {
+      position:relative;
+      background-position:center;
+      background-size:cover;
+      padding:4rem 1rem;
+      margin-bottom:2rem;
+    }
+    .season-section .cards {
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:1rem;
+      margin-top:2rem;
+    }
+    .season-section .card {
+      background:rgba(255,255,255,0.8);
+      border-radius:8px;
+      overflow:hidden;
+      width:220px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+      transition:transform .2s;
+      cursor:pointer;
+    }
+    .season-section .card:hover {
+      transform:translateY(-5px);
+    }
+    .season-section .card img {
+      width:170%; height:200px; object-fit:cover;
+    }
+    .season-section .card .card-title {
+      padding:.75rem;
+      font-weight:700;
+      font-size:.95rem;
+      text-align:center;
+    }
+    .season-section .season-label {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 900;       /* 가장 굵은 Pretendard */
+  font-size: 3rem;        /* 크기 원하는 만큼 조정 */
+  color: #fff;            /* 흰색 */
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+    /* ──────────────────────────────────── */
+    /* 각 계절 배경이미지 */
+    #spring { background-image:url('images/spring-bg.jpg'); }
+    #summer { background-image:url('images/summer-bg.jpg'); }
+    #autumn { background-image:url('images/autumn-bg.jpg'); }
+    #winter { background-image:url('images/winter-bg.jpg'); }
+
+    /* ──────────────────────────────────── */
+    /* 반응형 */
+    @media (max-width:600px) {
+      .season-section .card { width:160px; }
+    }
+    .season-section {
+  min-height: 450px;         /* 높이 확장 */
+  margin-bottom: 3rem;       /* 섹션 간격 넓힘 */
+  padding: 5rem 2rem;        /* 패딩 확장 */
+  border: 3px solid;         /* 테두리 (색은 아래에서 지정) */
+  border-radius: 12px;       /* 모서리 둥글게 */
+  position: relative;        /* season-title 절대위치용 */
+}
+
+/* 계절별 테두리 색 지정 */
+#spring  { border-color: #7BC950; }   /* 봄: 연두 */
+#summer  { border-color: #FFA500; }   /* 여름: 주황 */
+#autumn  { border-color: #D2691E; }   /* 가을: 갈색 */
+#winter  { border-color: #87CEEB; }   /* 겨울: 하늘색 */
+
+/* ── 섹션 상단 영어 제목 ── */
+.season-title {
+  position: absolute;
+  top: 1rem; left: 1rem;
+  font-family: serif;       /* 굵은 명조 계열 */
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: #333;
+  background: rgba(255,255,255,0.8);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* ── 카드들 간 간격 ── */
+.season-section .cards {
+  gap: 1.5rem;   /* 기존보다 넓힘 */
+}
+
+/* ── 하트 아이콘 ── */
+.map-card {
+  position: relative;  /* heart 절대위치용 */
+}
+.map-card .heart {
+  position: absolute;
+  top: 8px; right: 8px;
+  font-size: 1.2rem;
+  color: #ccc;
+  cursor: pointer;
+  transition: color .2s;
+}
+.map-card .heart.active {
+  color: red;
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- 0. 네비게이션 -->
+  <header id="topnav">
+    <nav>
+      <ul>
+        <li class="logo-title"><a href="유퀴즈온더트립!.html">유퀴즈 온더 트립!</a></li>
+        <li><a href="유퀴즈온더트립!.html">홈</a></li>
+    
+        <!-- 요기를 이렇게 고쳐주세요 -->
+        <li><a href="./테마별지도.html">테마별 지도</a></li>
+        <li><a href="내 여행.html">내 여행</a></li>
+        <li><a href="로그인.html">로그인</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <!-- 1. 설명문구 -->
+    <div class="intro">
+      <h2>계절 네스푼</h2>
+      <p>“계절 네스푼”은 2025년의 사계절의 감각을 한 스푼씩 담아내는 테마로,<br>
+      각 계절마다 꼭 경험해봐야 할 여행지와 순간,<br>
+      그리고 계절별로만 만날 수 있는 특별한 풍경이나 체험을 소개하는 곳입니다.</p>
+    </div>
+
+    <!-- 2. 봄 섹션 -->
+    <section id="spring" class="season-section">
+        <div class="season-label">SPRING</div>
+    
+    </section>
+
+    <!-- 3. 여름 섹션 -->
+    <section id="summer" class="season-section">
+        <div class="season-label">SUMMER</div>
+     
+    </section>
+
+    <!-- 4. 가을 섹션 -->
+    <section id="autumn" class="season-section">
+        <div class="season-label">AUTUMN</div>
+  
+    </section>
+
+    <!-- 5. 겨울 섹션 -->
+    <section id="winter" class="season-section">
+        <div class="season-label">WINTER</div>
+     
+    </section>
+
+  </div>
+  <script>
+    // (기존 모달/모두보기 스크립트 아래에 추가)
+    document.querySelectorAll('.map-card .heart').forEach(heart => {
+      heart.addEventListener('click', e => {
+        e.stopPropagation();        // 카드 클릭 이벤트 막기
+        heart.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>

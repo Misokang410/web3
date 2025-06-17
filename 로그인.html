@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>마이 페이지 – 유퀴즈 온더 트립!</title>
+  <link href="https://cdn.jsdelivr.net/npm/pretendard/dist/web/static/pretendard.css" rel="stylesheet"/>
+  <style>
+    /* ── 0. 네비게이션 ── */
+    #topnav { background:#000; }
+    #topnav nav ul { display:flex; align-items:center; list-style:none;
+      max-width:1200px; margin:auto; padding:.5rem 1rem; }
+    #topnav nav ul li { margin-right:1.5rem; }
+    #topnav nav ul li.logo-title { margin-right:auto; }
+    #topnav nav ul li a {
+      color:#fff; text-decoration:none;
+      font-family:'Pretendard',sans-serif;
+      font-size:.9rem; font-weight:600;
+      transition:opacity .3s;
+    }
+    #topnav nav ul li.logo-title a {
+      font-size:1rem; font-weight:700;
+    }
+    #topnav nav ul li a:hover { opacity:.7; }
+
+    /* ── 공통 리셋 & 컨테이너 ── */
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Pretendard',sans-serif;color:#333;background:#f9f9f9;line-height:1.5}
+    .container{max-width:400px;margin:3rem auto;padding:0 1rem}
+
+    /* ── 탭 네비 (로그인/회원가입) ── */
+    .tabs {
+      display:flex; border-bottom:2px solid #eee;
+      margin-bottom:2rem;
+    }
+    .tab {
+      flex:1; text-align:center; padding:.75rem 0;
+      font-weight:700; cursor:pointer; transition:color .2s;
+      color:#555;
+    }
+    .tab.active {
+      color:#000; border-bottom:3px solid #87CEFA;
+    }
+
+    /* ── 폼 ── */
+    .form { display:none; }
+    .form.active { display:block; }
+    .form-group {
+      margin-bottom:1.5rem;
+    }
+    .form-group label {
+      display:block; font-weight:700; margin-bottom:.5rem;
+    }
+    .form-group input {
+      width:100%; padding:.75rem; border:1px solid #ccc;
+      border-radius:4px; font-size:1rem;
+    }
+    .btn {
+      width:100%; padding:.75rem; background:#87CEFA;
+      border:none; border-radius:4px; color:#fff;
+      font-weight:700; cursor:pointer; font-size:1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 0. 네비게이션 -->
+  <header id="topnav">
+    <nav>
+      <ul>
+        <li class="logo-title"><a href="유퀴즈온더트립!.html">유퀴즈 온더 트립!</a></li>
+        <li><a href="유퀴즈온더트립!.html">홈</a></li>
+        <li><a href="테마별지도.html">테마별 지도</a></li>
+        <li><a href="계절네스푼.html">계절 네스푼</a></li>
+        <li><a href="내 여행.html">내 여행</a></li>
+        <li><a href="로그인.html">로그인</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <!-- 탭 -->
+    <div class="tabs">
+      <div id="loginTab" class="tab active">로그인</div>
+      <div id="signupTab" class="tab">회원가입</div>
+    </div>
+
+    <!-- 로그인 폼 -->
+    <div id="loginForm" class="form active">
+      <div class="form-group">
+        <label for="loginEmail">이메일</label>
+        <input id="loginEmail" type="email" placeholder="you@example.com"/>
+      </div>
+      <div class="form-group">
+        <label for="loginPw">비밀번호</label>
+        <input id="loginPw" type="password" placeholder="********"/>
+      </div>
+      <button class="btn">로그인</button>
+    </div>
+
+    <!-- 회원가입 폼 -->
+    <div id="signupForm" class="form">
+      <div class="form-group">
+        <label for="signName">이름</label>
+        <input id="signName" type="text" placeholder="홍길동"/>
+      </div>
+      <div class="form-group">
+        <label for="signEmail">이메일</label>
+        <input id="signEmail" type="email" placeholder="you@example.com"/>
+      </div>
+      <div class="form-group">
+        <label for="signPw">비밀번호</label>
+        <input id="signPw" type="password" placeholder="********"/>
+      </div>
+      <div class="form-group">
+        <label for="signPw2">비밀번호 확인</label>
+        <input id="signPw2" type="password" placeholder="********"/>
+      </div>
+      <button class="btn">회원가입</button>
+    </div>
+  </div>
+
+  <script>
+    const loginTab = document.getElementById('loginTab');
+    const signupTab = document.getElementById('signupTab');
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+
+    loginTab.addEventListener('click', () => {
+      loginTab.classList.add('active');
+      signupTab.classList.remove('active');
+      loginForm.classList.add('active');
+      signupForm.classList.remove('active');
+    });
+    signupTab.addEventListener('click', () => {
+      signupTab.classList.add('active');
+      loginTab.classList.remove('active');
+      signupForm.classList.add('active');
+      loginForm.classList.remove('active');
+    });
+  </script>
+</body>
+</html>

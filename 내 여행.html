@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>나의 여행 – 유퀴즈 온더 트립!</title>
+  <link href="https://cdn.jsdelivr.net/npm/pretendard/dist/web/static/pretendard.css" rel="stylesheet"/>
+  <style>
+    /* ── 0. 네비게이션 ── */
+    #topnav { background:#000; }
+    #topnav nav ul {
+      display:flex; align-items:center; list-style:none;
+      max-width:1200px; margin:auto; padding:.5rem 1rem;
+    }
+    #topnav nav ul li { margin-right:1.5rem; }
+    #topnav nav ul li.logo-title { margin-right:auto; }
+    #topnav nav ul li a {
+      color:#fff; text-decoration:none;
+      font-family:'Pretendard',sans-serif;
+      font-size:.9rem; font-weight:600;
+      transition:opacity .3s;
+    }
+    #topnav nav ul li.logo-title a {
+      font-size:1rem; font-weight:700;
+    }
+    #topnav nav ul li a:hover { opacity:.7; }
+
+    /* ── 공통 리셋 & 컨테이너 ── */
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Pretendard',sans-serif;color:#333;background:#f9f9f9;line-height:1.5}
+    .container{max-width:1200px;margin:2rem auto;padding:0 1rem}
+
+    /* ── “나의 여행” 헤더 ── */
+    .section-title {
+      font-size:2rem; font-weight:700; margin-bottom:1rem; text-align:center;
+    }
+
+    /* ── 여행 카드 그리드 ── */
+    .trips-container {
+      display:grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+      gap:1.5rem;
+    }
+    .trip-card {
+      background:#fff; border-radius:8px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+      overflow:hidden; transition:transform .2s; cursor:pointer;
+    }
+    .trip-card:hover { transform:translateY(-5px) }
+    .trip-card img {
+      width:100%; height:160px; object-fit:cover;
+    }
+    .trip-info {
+      padding:1rem;
+    }
+    .trip-info h3 {
+      font-size:1.1rem; font-weight:700; margin-bottom:.5rem;
+    }
+    .trip-info p {
+      font-size:.9rem; color:#555;
+    }
+    /* 카드 컨테이너에 relative 달아주기 */
+.trip-card {
+  position: relative;
+}
+
+/* 하트 아이콘 스타일 */
+.trip-card .heart {
+  position: absolute;
+  top: 8px;        /* 카드 위에서 여유값 */
+  right: 8px;      /* 카드 오른쪽에서 여유값 */
+  font-size: 1.4rem;
+  color: red;
+  pointer-events: none; /* 클릭 이벤트가 이미지나 카드에 방해되지 않도록 */
+}
+  </style>
+</head>
+<body>
+
+  <!-- 0. 네비게이션 -->
+  <header id="topnav">
+    <nav>
+      <ul>
+        <li class="logo-title"><a href="유퀴즈온더트립!.html">유퀴즈 온더 트립!</a></li>
+        <li><a href="유퀴즈온더트립!.html">홈</a></li>
+        <li><a href="테마별지도.html">테마별 지도</a></li>
+        <li><a href="계절네스푼.html">계절 네스푼</a></li>
+        <li><a href="내 여행.html">내 여행</a></li>
+        <li><a href="로그인.html">로그인</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2 class="section-title">내 여행</h2>
+    <div class="trips-container">
+      <!-- 예시 카드 1 -->
+      <div class="trip-card">
+        <span class="heart">♥</span>
+        <img src="images/trip1.jpg" alt="제주 올레길">
+        <div class="trip-info">
+          <h3>제주 올레길 여행</h3>
+          <p>2025-07-15 ~ 2025-07-18</p>
+        </div>
+      </div>
+      <!-- 예시 카드 2 -->
+      <div class="trip-card">
+        <span class="heart">♥</span>
+       <img src="images/trip2.jpg" alt="부산 광안리 서핑">
+        <div class="trip-info">
+          <h3>부산 광안리 서핑 여행</h3>
+          <p>2025-08-02 ~ 2025-08-04</p>
+        </div>
+      </div>
+      <!-- 예시 카드 3 -->
+      <div class="trip-card">
+        <span class="heart">♥</span>
+       <img src="images/trip3.jpg" alt="강릉 바닷가 캠핑">
+        <div class="trip-info">
+          <h3>강릉 바닷가 캠핑</h3>
+          <p>2025-09-10 ~ 2025-09-12</p>
+        </div>
+      </div>
+      <!-- 필요만큼 카드 추가 -->
+    </div>
+  </div>
+
+</body>
+</html>
